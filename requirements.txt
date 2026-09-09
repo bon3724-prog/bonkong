@@ -1,0 +1,4 @@
+anthropic>=0.40,<1
+korean-lunar-calendar>=0.3.1
+matplotlib>=3.8,<4
+requests>=2.31,<3
