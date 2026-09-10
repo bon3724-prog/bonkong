@@ -1,0 +1,75 @@
+name: 오늘의 운세 자동 발행
+
+on:
+  schedule:
+    # cron은 UTC 기준. 21:40 UTC = 06:40 KST
+    # GitHub Actions는 최대 수십 분 지연될 수 있어 20분 여유를 뒀다.
+    - cron: "40 21 * * *"
+  workflow_dispatch:      # 수동 실행 버튼 (테스트용)
+
+permissions:
+  contents: write         # 카드 이미지를 저장소에 커밋하기 위해 필요
+
+concurrency:
+  group: daily-fortune
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: 한글 폰트 설치
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-nanum
+          sudo fc-cache -f
+
+      - name: 의존성 설치
+        run: pip install -r requirements.txt
+
+      - name: 운세 텍스트 생성
+        run: python generate.py
+
+      - name: 카드 이미지 생성
+        run: python cards.py
+
+      - name: 이미지 커밋 (GitHub Pages로 배포)
+        run: |
+          git config user.name  "fortune-bot"
+          git config user.email "actions@github.com"
+          git add data docs
+          git commit -m "운세 $(TZ=Asia/Seoul date +%Y-%m-%d)" || exit 0
+          git push
+
+      - name: Pages 배포 대기
+        run: sleep 120
+
+      - name: 쓰레드 · 인스타 발행
+        env:
+          PAGES_BASE:      ${{ vars.PAGES_BASE }}
+          THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+          THREADS_TOKEN:   ${{ secrets.THREADS_TOKEN }}
+          IG_USER_ID:      ${{ secrets.IG_USER_ID }}
+          IG_TOKEN:        ${{ secrets.IG_TOKEN }}
+          PUBLISH_THREADS: ${{ vars.PUBLISH_THREADS || '1' }}
+        run: python publish.py
+
+      - name: 실패 시 텔레그램 알림
+        if: failure()
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT:  ${{ secrets.TG_CHAT }}
+        run: |
+          [ -z "$TG_TOKEN" ] && exit 0
+          curl -s -X POST "https://api.telegram.org/bot$TG_TOKEN/sendMessage" \
+            -d chat_id="$TG_CHAT" \
+            -d text="⚠️ 오늘의 운세 발행 실패 — ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

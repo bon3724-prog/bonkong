@@ -1,0 +1,51 @@
+name: 오늘의 운세 자동 발행
+
+on:
+  schedule:
+    - cron: "40 21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-fortune
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: 한글 폰트 설치
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-nanum
+          sudo fc-cache -f
+      - name: 의존성 설치
+        run: pip install -r requirements.txt
+      - name: 운세 텍스트 생성
+        run: python generate.py
+      - name: 카드 이미지 생성
+        run: python cards.py
+      - name: 이미지 커밋 (GitHub Pages로 배포)
+        run: |
+          git config user.name "fortune-bot"
+          git config user.email "actions@github.com"
+          git add data docs
+          git commit -m "운세 $(TZ=Asia/Seoul date +%Y-%m-%d)" || exit 0
+          git push
+      - name: Pages 배포 대기
+        run: sleep 120
+      - name: 인스타 발행
+        env:
+          PAGES_BASE: ${{ vars.PAGES_BASE }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          PUBLISH_THREADS: "0"
+        run: python publish.py
