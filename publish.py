@@ -18,6 +18,7 @@ import time
 import pathlib
 import datetime
 import zoneinfo
+import urllib.parse
 import requests
 
 ROOT = pathlib.Path(__file__).parent
@@ -49,6 +50,19 @@ def require_env(*names):
 
 def configured(*names):
     return all(os.environ.get(name) for name in names)
+
+
+def page_base_url():
+    value = os.environ["PAGES_BASE"].strip()
+    if value.lower().startswith("value:"):
+        value = value.split(":", 1)[1].strip()
+    parsed = urllib.parse.urlparse(value)
+    if parsed.scheme != "https" or not parsed.netloc:
+        raise RuntimeError(
+            "PAGES_BASE는 https://로 시작하는 주소만 입력해야 합니다 "
+            f"(현재값: {value!r})"
+        )
+    return value.rstrip("/")
 
 
 # ── 캡션 ────────────────────────────────────────────────
@@ -183,7 +197,7 @@ def refresh_tokens():
 
 def main():
     require_env("PAGES_BASE")
-    base = os.environ["PAGES_BASE"].rstrip("/")
+    base = page_base_url()
     today = datetime.datetime.now(KST).date().isoformat()
 
     d = json.loads((ROOT / "data" / f"{today}.json").read_text(encoding="utf-8"))
