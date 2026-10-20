@@ -1,0 +1,20 @@
+name: 토큰 갱신 확인
+
+# 발행 없이 토큰 갱신만 수동으로 돌려본다. 매일 갱신은 daily.yml 발행 때 같이 된다.
+on:
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: 토큰 갱신
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python publish.py --refresh-only

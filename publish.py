@@ -201,20 +201,41 @@ def publish_instagram(urls, caption):
 # ── 토큰 갱신 ───────────────────────────────────────────
 def refresh_tokens():
     """장기 토큰은 60일이면 만료된다. 매일 갱신 호출을 걸어두면 만료되지 않는다.
-    갱신된 값은 로그로 찍히지 않으니, 실패하면 알림만 받고 수동 재발급할 것."""
-    if not configured("THREADS_TOKEN"):
-        return
-    try:
-        r = get("https://graph.threads.net/refresh_access_token", {
-            "grant_type": "th_refresh_token",
-            "access_token": os.environ["THREADS_TOKEN"],
-        })
-        print(f"[토큰] 쓰레드 갱신 OK, 만료까지 {r.get('expires_in', 0)//86400}일")
-    except Exception as e:
-        print(f"[토큰] 쓰레드 갱신 실패: {e}", file=sys.stderr)
+    갱신된 값은 로그로 찍히지 않으니, 실패하면 알림만 받고 수동 재발급할 것.
+    실패는 Actions 화면에 경고(::warning::)로 띄우고, 발행 자체는 막지 않는다."""
+    if configured("IG_TOKEN"):
+        token = clean_secret(os.environ["IG_TOKEN"])
+        if token.startswith("IG"):  # Instagram 로그인 토큰만 이 방식으로 갱신된다
+            try:
+                r = get("https://graph.instagram.com/refresh_access_token", {
+                    "grant_type": "ig_refresh_token",
+                    "access_token": token,
+                })
+                print(f"[토큰] 인스타 갱신 OK, 만료까지 {r.get('expires_in', 0)//86400}일")
+                if r.get("access_token") and r["access_token"] != token:
+                    print("::warning::인스타 갱신 응답의 토큰 문자열이 기존과 다릅니다. "
+                          "기존 토큰이 계속 쓰이는지 며칠 지켜보고, 막히면 IG_TOKEN을 새로 넣으세요.")
+            except Exception as e:
+                print(f"::warning::인스타 토큰 갱신 실패 — 만료 전에 IG_TOKEN 수동 재발급 필요: {e}")
+        else:
+            print("::warning::IG_TOKEN이 페이스북 로그인 토큰이라 자동 갱신되지 않습니다.")
+
+    if configured("THREADS_TOKEN"):
+        try:
+            r = get("https://graph.threads.net/refresh_access_token", {
+                "grant_type": "th_refresh_token",
+                "access_token": os.environ["THREADS_TOKEN"],
+            })
+            print(f"[토큰] 쓰레드 갱신 OK, 만료까지 {r.get('expires_in', 0)//86400}일")
+        except Exception as e:
+            print(f"::warning::쓰레드 토큰 갱신 실패: {e}")
 
 
 def main():
+    if "--refresh-only" in sys.argv:
+        refresh_tokens()
+        return
+
     require_env("PAGES_BASE")
     base = page_base_url()
     today = datetime.datetime.now(KST).date().isoformat()
@@ -239,6 +260,9 @@ def main():
 
     require_env("IG_USER_ID", "IG_TOKEN")
 
+    # 발행이 중간에 실패해도 갱신은 되도록 먼저 한다 (갱신이 안 되면 60일 뒤 토큰이 만료됨)
+    refresh_tokens()
+
     # 이미지 URL이 실제로 열리는지 먼저 확인 (Pages 배포 지연 방어)
     for u in urls:
         r = requests.head(u, timeout=30, allow_redirects=True)
@@ -261,8 +285,6 @@ def main():
         except Exception as e:  # 한쪽 실패가 다른 쪽을 막지 않게
             print(f"[{name}] 실패: {e}", file=sys.stderr)
             errors.append(f"{name}: {e}")
-
-    refresh_tokens()
 
     if errors:
         raise SystemExit("발행 실패:\n" + "\n".join(errors))
