@@ -160,6 +160,9 @@ def wait_ready(container_id, token, timeout=300):
 def publish_instagram(urls, caption):
     uid, token = clean_secret(os.environ["IG_USER_ID"]), clean_secret(os.environ["IG_TOKEN"])
     IG_API = ig_api(token)
+    if token.startswith("IG"):
+        # Instagram 로그인 토큰은 'me'가 토큰 주인 계정을 가리킨다 (IG_USER_ID 불일치 방지)
+        uid = "me"
 
     if len(urls) > 10:
         raise ValueError(f"인스타 캐러셀은 API로 10장까지입니다 (현재 {len(urls)}장)")
