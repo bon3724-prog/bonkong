@@ -68,6 +68,7 @@ def page_base_url():
 # ── 캡션 ────────────────────────────────────────────────
 def build_captions(d):
     date_k = datetime.date.fromisoformat(d["date"]).strftime("%m월 %d일")
+    best = " · ".join(f"{a}띠" for a in d.get("best", []))
 
     # 쓰레드는 500자 제한 — 짧게
     threads_text = (
@@ -76,7 +77,8 @@ def build_captions(d):
         f"{d['headline']}\n\n"
         f"행운의 색 {d['lucky_color']} · 숫자 {d['lucky_number']} · "
         f"아이템 {d['lucky_item']}\n\n"
-        f"별자리와 띠별 운세는 카드에서 확인하세요 →\n"
+        f"오늘 운 좋은 띠: {best}\n"
+        f"애정운·금전운·사업운은 카드에서 확인하세요 →\n"
         f"#오늘의운세"  # 쓰레드는 해시태그 1개만 인식됨
     )
     if len(threads_text) > 500:
@@ -89,11 +91,12 @@ def build_captions(d):
         f"✨ 행운의 색 {d['lucky_color']}\n"
         f"✨ 행운의 숫자 {d['lucky_number']}\n"
         f"✨ 행운의 아이템 {d['lucky_item']}\n\n"
-        f"오늘 나의 별자리·띠 운세는 넘겨서 확인 👉\n"
+        f"🏆 오늘 운 좋은 띠: {best}\n\n"
+        f"내 띠의 애정운·금전운·사업운은 넘겨서 확인 👉\n"
         f"매일 아침 7시 업데이트됩니다.\n"
         f"※ 재미로 보는 운세입니다\n\n"
-        f"#오늘의운세 #별자리운세 #띠별운세 #오늘의띠별운세 #운세 "
-        f"#데일리운세 #{d['date'].replace('-', '')}운세"
+        f"#오늘의운세 #띠별운세 #오늘의띠별운세 #운세 #데일리운세 "
+        f"#애정운 #금전운 #사업운 #{d['date'].replace('-', '')}운세"
     )
     return threads_text, ig_caption
 
@@ -222,7 +225,9 @@ def main():
     if len(files) != 7:
         raise RuntimeError(f"카드가 7장이 아닙니다 ({len(files)}장)")
 
-    urls = [f"{base}/cards/{today}/{f.name}" for f in files]
+    # 같은 날 다시 발행할 때 인스타가 캐시된 옛 카드를 가져가지 않도록 버전을 붙인다
+    ver = int(time.time())
+    urls = [f"{base}/cards/{today}/{f.name}?v={ver}" for f in files]
     threads_text, ig_caption = build_captions(d)
 
     if DRY:
