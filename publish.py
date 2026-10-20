@@ -24,7 +24,7 @@ import requests
 ROOT = pathlib.Path(__file__).parent
 KST = zoneinfo.ZoneInfo("Asia/Seoul")
 THREADS_API = "https://graph.threads.net/v1.0"
-IG_API = f"https://graph.facebook.com/{os.environ.get('IG_API_VERSION', 'v24.0')}"
+IG_VERSION = os.environ.get("IG_API_VERSION", "v24.0")
 DRY = os.environ.get("DRY_RUN") == "1"
 
 
@@ -130,11 +130,23 @@ def publish_threads(urls, text):
 
 
 # ── 인스타그램 ──────────────────────────────────────────
+def ig_api(token):
+    """토큰 종류에 맞는 API 주소. 'Instagram 로그인' 토큰(IGAA...)은 graph.instagram.com,
+    페이스북 로그인 토큰(EAA...)은 graph.facebook.com 에서만 인식된다."""
+    host = "graph.instagram.com" if token.startswith("IG") else "graph.facebook.com"
+    return f"https://{host}/{IG_VERSION}"
+
+
+def clean_secret(v):
+    """시크릿 붙여넣을 때 섞여 들어간 공백·줄바꿈·따옴표 제거."""
+    return v.strip().strip("\"'").strip()
+
+
 def wait_ready(container_id, token, timeout=300):
     """컨테이너가 FINISHED 될 때까지 폴링. 이거 없이 발행하면 자주 실패한다."""
     deadline = time.time() + timeout
     while time.time() < deadline:
-        res = get(f"{IG_API}/{container_id}",
+        res = get(f"{ig_api(token)}/{container_id}",
                   {"fields": "status_code,status", "access_token": token})
         code = res.get("status_code")
         if code == "FINISHED":
@@ -146,7 +158,8 @@ def wait_ready(container_id, token, timeout=300):
 
 
 def publish_instagram(urls, caption):
-    uid, token = os.environ["IG_USER_ID"], os.environ["IG_TOKEN"]
+    uid, token = clean_secret(os.environ["IG_USER_ID"]), clean_secret(os.environ["IG_TOKEN"])
+    IG_API = ig_api(token)
 
     if len(urls) > 10:
         raise ValueError(f"인스타 캐러셀은 API로 10장까지입니다 (현재 {len(urls)}장)")
