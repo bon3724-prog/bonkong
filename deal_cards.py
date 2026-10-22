@@ -129,7 +129,10 @@ def draw_item(it, idx, total, post_date, out):
     panel(ax, 0.06, 0.62, 0.88, 0.10, color="#FDECEC")
     ax.text(0.10, 0.67, dday(post_date, dl), color=ACCENT, fontsize=44, fontweight="bold", va="center")
     note = f"{kdate(dl)}까지" + (f" · {it['deadline_note']}" if it.get("deadline_note") else "")
-    ax.text(0.36, 0.67, wrap(note, 20), color=TEXT, fontsize=26, va="center", linespacing=1.4)
+    lines = textwrap.wrap(note, 20)
+    if len(lines) > 2:  # 상자 안에 2줄까지만 — 넘치면 말줄임
+        lines = [lines[0], lines[1][:19] + "…"]
+    ax.text(0.36, 0.67, "\n".join(lines), color=TEXT, fontsize=26, va="center", linespacing=1.4)
 
     rows = [("대상", it["who"]), ("혜택", it["benefit"]), ("신청", it["how"])]
     y = 0.54

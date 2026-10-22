@@ -153,6 +153,8 @@ def validate(d, target):
                     why = "이미 마감"
             except ValueError:
                 why = f"마감일 형식 오류({it['deadline']})"
+        if not why and len(it.get("deadline_note", "")) > 24:  # 카드 D-day 상자에 들어가게
+            it["deadline_note"] = it["deadline_note"][:23] + "…"
         (dropped.append(f"{it.get('title', '?')}: {why}") if why else keep.append(it))
     d["items"] = keep[:5]
     d["date"] = target.isoformat()
