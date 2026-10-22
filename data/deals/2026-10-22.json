@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-22",
+  "created_at": "2026-10-22T11:58+09:00",
+  "status": "draft",
+  "headline": "이번 주 챙길 혜택 3가지",
+  "items": [
+    {
+      "category": "신청 마감",
+      "title": "모두의카드 카드번호 확인",
+      "who": "카드 재발급·갱신 후 새 번호 미등록자",
+      "benefit": "현재 쓰는 카드번호 등록해 교통비 환급 유지",
+      "deadline": "2026-10-26",
+      "deadline_note": "27일 0~10시 점검으로 등록·변경 불가",
+      "how": "모두의카드 누리집·앱 '내카드'에서 등록",
+      "source_name": "모두의카드(국토교통부 대광위) 공지",
+      "source_url": "https://korea-pass.kr",
+      "checked": "2026-10-22 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "대구 전통시장 상품권 환급",
+      "who": "대구 참여 전통시장 76곳 구매 고객",
+      "benefit": "3만원 이상 5천원권, 5만원 이상 1만원권 환급",
+      "deadline": "2026-10-24",
+      "deadline_note": "5일장·서부시장은 21일 종료, 상품권 소진 시 조기 종료",
+      "how": "참여 시장 환급부스 방문(운영시간 시장별)",
+      "source_name": "대구광역시 공지",
+      "source_url": "https://www.daegu.go.kr/index.do?menu_id=00000854&menu_link=/icms/bbs/selectBoardArticle.do&bbsId=BBS_00029&nttId=826271",
+      "checked": "2026-10-22 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "쿠팡이츠 외식 브랜드 할인전",
+      "who": "쿠팡 와우회원",
+      "benefit": "도미노피자 8,000원 등 브랜드별 할인 쿠폰",
+      "deadline": "2026-11-01",
+      "deadline_note": "브랜드별 기간 다름, 쿠폰은 브랜드별 하루 1회",
+      "how": "쿠팡이츠 앱에서 참여 브랜드 주문 시 사용",
+      "source_name": "쿠팡 뉴스룸 보도자료",
+      "source_url": "https://news.coupang.com/archives/67694/",
+      "checked": "2026-10-22 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    85,
+    86,
+    87,
+    88,
+    89,
+    90
+  ],
+  "tg_sent_at": 1792637122
+}
