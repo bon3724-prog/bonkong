@@ -1,11 +1,26 @@
-# insta_auto — 오늘의 운세 자동 발행 봇
+# insta_auto — 인스타 자동 발행 봇
 
-매일 아침 7시(KST), 12띠 운세(출생연도 + 총운 + 애정운·금전운·사업운 별점)를 카드 이미지 7장으로 만들어
-**쓰레드**와 **인스타그램**에 캐러셀로 자동 발행하는 프로젝트.
+> **2026-10-22부터 주제 변경: "오늘 놓치면 손해 보는 정보 (지원금·신청 마감·할인)"**
+> 운세 자동 발행은 중단했다(아래 운세 설명과 generate.py·cards.py는 기록용으로 남김. `publish.py`의 인스타 발행·토큰 갱신 함수는 새 흐름에서도 그대로 쓴다).
+>
+> **새 흐름 — 확인 후 게시**
+> 1. 밤 22:30 PC 작업 스케줄러 `InstaDealsDraft` → `deals_draft.py`
+>    - 최근 뉴스 묶음(`blog/news-report/data/*_digest.md`, 6시간 넘게 오래되면 `collect.py`로 새로 수집)을 근거로
+>      Claude(`claude -p`, 지시문 `prompts/deals.md`)가 3~5개를 골라 **공식 페이지로 확인**해 `data/deals/<게시일>.json` 저장
+>    - 검사(빈 칸·분류·마감 지난 항목 제거) → `deal_cards.py`로 카드(밝은 배경, 표지+항목별+마무리, 최대 7장) → 커밋·푸시(GitHub Pages)
+>    - 텔레그램(news-alert 봇)으로 카드 미리보기 + "승인 MMDD / 취소 MMDD" 안내
+> 2. 아침 GitHub Actions `daily.yml`(06:40·08:40·10:40·12:40 KST 시도) → `deals_publish.py`
+>    - 텔레그램 '승인 MMDD'(또는 미리보기 답장 '승인') 또는 JSON `status: approved`면 인스타 캐러셀 발행 → `posted`
+>    - 낮 12시 이후 마지막 시도까지 미승인이면 `skipped` + 알림. 인스타 토큰 갱신은 매 실행마다(승인 여부 무관)
+> - **사람 승인 없이 게시하지 않는다.** 이 원칙을 바꾸지 말 것(마감·금액 오류는 독자 실제 손해).
+> - 저장소가 공개라 Claude 원문 출력·로그(`data/deals/*_claude.txt`, `draft.log`)는 .gitignore. 토큰은 GitHub Secrets(IG_TOKEN, IG_USER_ID, TG_TOKEN, TG_CHAT)에만.
+> - PC가 밤에 꺼져 있으면 초안이 안 생기고, 그날은 게시하지 않는다(알림만).
 
 작업 환경: Windows / 바탕화면 `insta_auto` 폴더
 
 ---
+
+## (이전) 오늘의 운세 — 2026-10-22까지 운영
 
 ## 파이프라인
 

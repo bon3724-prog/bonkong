@@ -1,3 +1,7 @@
 __pycache__/
 .venv/
 *.pyc
+# 공개 저장소라 로그·Claude 원문 출력·로컬 백업은 올리지 않는다
+data/deals/*_claude.txt
+data/deals/draft.log
+_local_backup_*/
