@@ -12,6 +12,7 @@ deals_draft.py — '오늘 놓치면 손해 보는 정보' 초안 만들기 (PC,
 사용:  python deals_draft.py            (기본)
        python deals_draft.py 2026-10-23 (게시일 지정)
        python deals_draft.py --no-push   (커밋·푸시·텔레그램 없이 카드까지만)
+       python deals_draft.py --force     (이미 보낸 초안이 있어도 다시 만들기)
 """
 
 import os
@@ -167,6 +168,11 @@ def main():
     target = datetime.date.fromisoformat(args[0]) if args else (
         now.date() + datetime.timedelta(days=1) if now.hour >= 12 else now.date())
     out_path = ROOT / "data" / "deals" / f"{target.isoformat()}.json"
+    if out_path.exists() and "--force" not in sys.argv:
+        prev = json.loads(out_path.read_text(encoding="utf-8"))
+        if prev.get("tg_sent_at") or prev.get("status") != "draft":
+            log(f"{target} 초안이 이미 있어 건너뜀 (status={prev.get('status')}). 다시 만들려면 --force")
+            return
     log(f"초안 시작: 게시일 {target}")
 
     if push:
