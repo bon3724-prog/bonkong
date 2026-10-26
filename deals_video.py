@@ -183,16 +183,33 @@ def item_scene(it, idx, total, pub):
     return {"els": els, "narration": narr, "accent": color}
 
 
+BLOG_NAME, BLOG_URL = "트렌드체크인", "blog.naver.com/roll_money"
+
+
 def outro_scene():
-    els = []
-    head = text_layer("저장해 두고\n놓치지 마세요".replace("\n", " "), 96, TEXT, bold=True, maxw=700, align="center")
-    els.append((head, (W - head.width) // 2, 640, 0.1, "pop"))
+    els, y = [], 470
+    head = text_layer("저장해 두고 놓치지 마세요", 96, TEXT, bold=True, maxw=700, align="center")
+    els.append((head, (W - head.width) // 2, y, 0.1, "pop")); y += head.height + 30
     line = Image.new("RGBA", (140, 12), (0, 0, 0, 0))
     ImageDraw.Draw(line).rounded_rectangle((0, 0, 139, 11), 6, fill=rgb(ACCENT))
-    els.append((line, (W - 140) // 2, 640 + head.height + 30, 0.4, "left"))
+    els.append((line, (W - 140) // 2, y, 0.4, "left")); y += 60
     note = text_layer("마감일·금액은 공식 페이지에서 꼭 확인하세요", 42, SUB, align="center", maxw=880)
-    els.append((note, (W - note.width) // 2, 640 + head.height + 90, 0.6, "up"))
-    narr = "마감일과 금액은 공식 페이지에서 꼭 확인하세요. 저장해 두고 놓치지 마세요."
+    els.append((note, (W - note.width) // 2, y, 0.6, "up")); y += note.height + 110
+    # 블로그 안내 카드
+    card_w = MAXW
+    t1 = text_layer("더 많은 생활 정보는", 44, SUB, align="center", maxw=card_w - 80)
+    t2 = text_layer(f"{BLOG_NAME} 블로그에서 확인하세요", 54, TEXT, bold=True, align="center", maxw=card_w - 80)
+    url = chip_layer(BLOG_URL, ACCENT, 40)
+    ch = 50 + t1.height + 10 + t2.height + 30 + url.height + 50
+    card = Image.new("RGBA", (card_w, ch), (0, 0, 0, 0))
+    ImageDraw.Draw(card).rounded_rectangle((0, 0, card_w - 1, ch - 1), 40, fill=rgb(PANEL))
+    cy = 50
+    for lay in (t1, t2):
+        card.alpha_composite(lay, ((card_w - lay.width) // 2, cy)); cy += lay.height + 10
+    card.alpha_composite(url, ((card_w - url.width) // 2, cy + 20))
+    els.append((card, MX, y, 1.0, "pop"))
+    narr = ("마감일과 금액은 공식 페이지에서 꼭 확인하세요. "
+            f"더 많은 생활 정보는 {BLOG_NAME} 블로그에서 확인하세요.")
     return {"els": els, "narration": narr, "accent": ACCENT}
 
 
@@ -285,13 +302,25 @@ def main():
     starts, t = [], 0.0
     for i, sc in enumerate(scenes):
         sc["audio"] = None
+        ad = 0
         if voice:
             p = work / f"v{i}.mp3"
-            asyncio.run(_tts(sc["narration"], p))
-            sc["audio"], ad = p, dur(p)
-        else:
-            ad = 0
-        min_len = 4.0 if 0 < i < len(scenes) - 1 else 3.2
+            try:
+                asyncio.run(_tts(sc["narration"], p))
+                sc["audio"], ad = p, dur(p)
+            except Exception as e:  # 음성 서비스가 막혀도 영상은 만든다
+                print(f"  음성 생성 실패 — 음성 없이 만듭니다: {str(e)[:120]}")
+                voice = False
+                for s in scenes:
+                    s["audio"] = None
+                starts, t = [], 0.0
+                for s in scenes[:i]:  # 앞 장면 길이도 음성 없이 다시 계산
+                    starts.append(t)
+                    s["span"] = 4.0 if s is not scenes[0] else 3.2
+                    t += s["span"]
+                ad = 0
+        last = i == len(scenes) - 1
+        min_len = 5.0 if last else (4.0 if i else 3.2)
         sc["span"] = max(ad + 1.0, min_len)
         starts.append(t)
         t += sc["span"]

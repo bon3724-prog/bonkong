@@ -4,9 +4,10 @@ deals_draft.py — '오늘 놓치면 손해 보는 정보' 초안 만들기 (PC,
 1. 최근 뉴스 묶음(blog/news-report/data/*_digest.md)을 찾는다. 6시간보다 오래됐으면 collect.py로 새로 모은다
 2. Claude(claude -p)가 prompts/deals.md 기준으로 정보를 고르고 공식 페이지로 확인해 data/deals/<게시일>.json 저장
 3. 형식·날짜를 검사해 잘못된 항목은 뺀다
-4. deal_cards.py로 카드 이미지 생성
-5. git 커밋·푸시 (GitHub Pages가 이미지를 공개해야 인스타가 가져갈 수 있다)
-6. 텔레그램으로 카드 미리보기 + 승인 방법 전송 → 사용자가 '승인 MMDD' 답장하면 아침에 GitHub이 게시
+4. deals_video.py로 릴스 모션그래픽 영상 생성 → docs/reels/<게시일>.mp4
+   (2026-10-26부터 카드 캐러셀 대신 릴스만 올린다 — 사용자 요청. deal_cards.py는 기록용으로 남김)
+5. git 커밋·푸시 (GitHub Pages가 영상을 공개해야 인스타가 가져갈 수 있다)
+6. 텔레그램으로 영상 미리보기 + 승인 방법 전송 → 사용자가 '승인 MMDD' 답장하면 아침에 GitHub이 게시
 
 게시일: 정오 이후 실행이면 내일, 그 전이면 오늘.
 사용:  python deals_draft.py            (기본)
@@ -21,6 +22,7 @@ import sys
 import json
 import time
 import uuid
+import shutil
 import pathlib
 import datetime
 import subprocess
@@ -69,8 +71,9 @@ def tg_call(token, method, fields, files=()):
     body = b"".join(f"--{b}\r\nContent-Disposition: form-data; name=\"{k}\"\r\n\r\n{v}\r\n".encode()
                     for k, v in fields.items())
     for name, path in files:
+        ctype = "video/mp4" if path.suffix == ".mp4" else "image/png"
         body += (f"--{b}\r\nContent-Disposition: form-data; name=\"{name}\"; filename=\"{path.name}\"\r\n"
-                 "Content-Type: image/png\r\n\r\n").encode() + path.read_bytes() + b"\r\n"
+                 f"Content-Type: {ctype}\r\n\r\n").encode() + path.read_bytes() + b"\r\n"
     body += f"--{b}--\r\n".encode()
     req = urllib.request.Request(f"https://api.telegram.org/bot{token}/{method}", data=body,
                                  headers={"Content-Type": f"multipart/form-data; boundary={b}"})
@@ -78,18 +81,17 @@ def tg_call(token, method, fields, files=()):
         return json.loads(r.read().decode())
 
 
-def send_preview(d, cards):
-    """카드 미리보기(앨범) + 승인 안내. 보낸 메시지 id 목록을 돌려준다."""
+def send_preview(d, video):
+    """릴스 영상 미리보기 + 승인 안내. 보낸 메시지 id 목록을 돌려준다."""
     token, chat = tg_keys()
     if not token or not chat:
         log("텔레그램 키가 없어 미리보기를 못 보냈어요 (news-alert/config.env 확인)")
         return [], 0
     mmdd = d["date"][5:7] + d["date"][8:10]
-    media = [{"type": "photo", "media": f"attach://c{i}"} for i in range(len(cards))]
-    res = tg_call(token, "sendMediaGroup", {"chat_id": chat, "media": json.dumps(media)},
-                  [(f"c{i}", p) for i, p in enumerate(cards)])
-    ids = [m["message_id"] for m in res.get("result", [])]
-    lines = [f"📸 {d['date']} 인스타 '놓치면 손해' 초안 ({len(d['items'])}개)"]
+    res = tg_call(token, "sendVideo", {"chat_id": chat, "supports_streaming": "true",
+                                       "caption": f"🎬 {d['date']} 릴스 미리보기"}, [("video", video)])
+    ids = [res["result"]["message_id"]] if res.get("ok") else []
+    lines = [f"🎬 {d['date']} 인스타 '놓치면 손해' 릴스 초안 ({len(d['items'])}개)"]
     for i, it in enumerate(d["items"], 1):
         lines.append(f"{i}. [{it['category']}] {it['title']} — 마감 {it['deadline']}\n   {it['source_url']}")
     lines.append(f"\n올려도 되면 '승인 {mmdd}' 라고 보내 주세요 (이 메시지에 '승인' 답장도 됨).\n"
@@ -219,21 +221,24 @@ def main():
         return
     out_path.write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    code, out = run([sys.executable, "deal_cards.py", target.isoformat()], ROOT)
-    if code:
-        log(f"카드 생성 실패: {out[-300:]}")
-        send_text(f"⚠️ {target} 인스타 카드 생성 실패")
+    code, out = run([sys.executable, "deals_video.py", target.isoformat()], ROOT, timeout=1200)
+    made = ROOT / "data" / "deals" / "video" / f"{target.isoformat()}.mp4"
+    if code or not made.exists():
+        log(f"릴스 영상 생성 실패: {out[-300:]}")
+        send_text(f"⚠️ {target} 인스타 릴스 영상 생성 실패")
         return
-    cards = sorted((ROOT / "docs" / "cards" / "deals" / target.isoformat()).glob("*.png"))
-    log(f"카드 {len(cards)}장 생성")
+    video = ROOT / "docs" / "reels" / f"{target.isoformat()}.mp4"
+    video.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(made, video)
+    log(f"릴스 영상 생성 ({video.stat().st_size // 1024}KB)")
     if not push:
         return
 
-    ids, sent_at = send_preview(d, cards)
+    ids, sent_at = send_preview(d, video)
     d["tg_message_ids"], d["tg_sent_at"] = ids, sent_at
     out_path.write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    run(["git", "add", "data/deals", f"docs/cards/deals/{target.isoformat()}"], ROOT)
+    run(["git", "add", "data/deals", f"docs/reels/{target.isoformat()}.mp4"], ROOT)
     code, out = run(["git", "commit", "-m", f"놓치면 손해 초안 {target}"], ROOT)
     for _ in range(3):
         code, out = run(["git", "pull", "--rebase", "--autostash", "origin", "main"], ROOT)

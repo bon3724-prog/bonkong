@@ -1,7 +1,8 @@
 """
-deals_publish.py — 승인된 '오늘 놓치면 손해 보는 정보' 카드를 인스타그램에 발행 (GitHub Actions)
+deals_publish.py — 승인된 '오늘 놓치면 손해 보는 정보' 릴스 영상을 인스타그램에 발행 (GitHub Actions)
+(2026-10-26부터 카드 캐러셀 대신 릴스만 올린다 — 사용자 요청)
 
-흐름: PC(deals_draft.py)가 전날 밤 data/deals/<날짜>.json + 카드 이미지를 만들어 푸시하고
+흐름: PC(deals_draft.py)가 전날 밤 data/deals/<날짜>.json + 릴스 영상(docs/reels/<날짜>.mp4)을 만들어 푸시하고
       텔레그램으로 미리보기를 보낸다 → 사용자가 '승인 MMDD'(또는 미리보기에 답장 '승인')
       → 이 스크립트가 아침에 승인 여부를 확인해 발행한다.
 
@@ -27,7 +28,7 @@ import datetime
 import requests
 
 from publish import (KST, DRY, page_base_url, require_env, configured, clean_secret,
-                     publish_instagram, refresh_tokens)
+                     publish_reel, refresh_tokens)
 
 ROOT = pathlib.Path(__file__).parent
 WEEK = "월화수목금토일"
@@ -98,7 +99,8 @@ def build_caption(d):
     head = f"📌 {date.month}월 {date.day}일 오늘 놓치면 손해 보는 정보\n{d.get('headline', '')}\n\n"
     tail = (f"※ {checked} 공식 안내 기준이에요. 예산 소진·일정 변경이 있을 수 있으니 "
             "신청 전 공식 홈페이지에서 꼭 확인하세요.\n"
-            "저장해 두고 마감 전에 챙기세요 🔖\n\n"
+            "저장해 두고 마감 전에 챙기세요 🔖\n"
+            "📚 더 많은 생활 정보는 트렌드체크인 블로그에서 확인하세요 → blog.naver.com/roll_money\n\n"
             "#놓치면손해 #지원금 #신청마감 #할인정보 #정부지원금 #생활정보 #생활꿀팁 #오늘의정보")
     def block(i, it, short):
         note = f" · {it['deadline_note']}" if it.get("deadline_note") else ""
@@ -159,37 +161,39 @@ def main():
         if last and not DRY:
             d["status"] = "skipped"
             save(path, d)
-            notify(f"⏭ {today} 인스타 카드가 승인되지 않아 오늘은 게시하지 않았어요.")
+            notify(f"⏭ {today} 인스타 릴스가 승인되지 않아 오늘은 게시하지 않았어요.")
         return
 
     require_env("PAGES_BASE")
     base = page_base_url()
-    files = sorted((ROOT / "docs" / "cards" / "deals" / today).glob("*.png"))
-    if not 3 <= len(files) <= 10:
-        raise SystemExit(f"카드 장수가 이상합니다 ({len(files)}장)")
-    ver = int(time.time())
-    urls = [f"{base}/cards/deals/{today}/{f.name}?v={ver}" for f in files]
+    video = ROOT / "docs" / "reels" / f"{today}.mp4"
+    if not video.exists():
+        raise SystemExit(f"릴스 영상이 없습니다: {video}")
+    url = f"{base}/reels/{today}.mp4?v={int(time.time())}"
     caption = build_caption(d)
 
     if DRY:
-        print("=== DRY RUN ===\n" + "\n".join(urls) + "\n\n--- 캡션 ---\n" + caption)
+        print("=== DRY RUN ===\n" + url + "\n\n--- 캡션 ---\n" + caption)
         return
 
     require_env("IG_USER_ID", "IG_TOKEN")
-    for u in urls:  # Pages 배포 지연 방어
-        r = requests.head(u, timeout=30, allow_redirects=True)
-        if not r.ok:
-            raise RuntimeError(f"이미지에 접근할 수 없습니다: {u} ({r.status_code})")
+    for _ in range(15):  # Pages 배포 지연 방어
+        r = requests.head(url, timeout=30, allow_redirects=True)
+        if r.ok:
+            break
+        time.sleep(20)
+    else:
+        raise RuntimeError(f"영상에 접근할 수 없습니다: {url} ({r.status_code})")
 
     try:
-        publish_instagram(urls, caption)
+        publish_reel(url, caption)
     except Exception as e:
-        notify(f"❌ {today} 인스타 게시 실패: {str(e)[:300]}")
+        notify(f"❌ {today} 인스타 릴스 게시 실패: {str(e)[:300]}")
         raise
     d["status"] = "posted"
     d["posted_at"] = datetime.datetime.now(KST).strftime("%Y-%m-%dT%H:%M+09:00")
     save(path, d)
-    notify(f"✅ {today} 인스타에 '놓치면 손해' 카드 {len(files)}장을 올렸어요.")
+    notify(f"✅ {today} 인스타에 '놓치면 손해' 릴스를 올렸어요.")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 name: 놓치면 손해 정보 발행
 
-# PC(deals_draft.py)가 전날 밤 초안 JSON과 카드 이미지를 올려 두면,
+# PC(deals_draft.py)가 전날 밤 초안 JSON과 릴스 영상(docs/reels)을 올려 두면,
 # 아침에 텔레그램 승인('승인 MMDD')을 확인해 승인된 날만 인스타에 올린다.
 # 승인을 늦게 할 수도 있어서 오전에 4번 시도한다 (06:40 / 08:40 / 10:40 / 12:40 KST).
 # GitHub 예약 실행은 실제로 1~2시간 늦게 시작될 수 있다.
@@ -24,7 +24,7 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
