@@ -5,3 +5,6 @@ __pycache__/
 data/deals/*_claude.txt
 data/deals/draft.log
 _local_backup_*/
+
+# 릴스 영상 샘플(로컬 전용)
+data/deals/video/

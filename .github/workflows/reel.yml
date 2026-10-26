@@ -1,0 +1,46 @@
+name: 놓치면 손해 릴스 발행 (수동)
+
+# 사용자가 직접 요청할 때만 수동 실행한다. 예약 실행 없음.
+# 영상(docs/reels/<기준일>.mp4)과 초안 JSON이 저장소에 올라가 있어야 한다.
+
+on:
+  workflow_dispatch:
+    inputs:
+      draft_date:
+        description: "초안 JSON 날짜 (data/deals/<날짜>.json)"
+        required: true
+      as_of:
+        description: "기준일 (영상 파일 docs/reels/<기준일>.mp4, 캡션 날짜·D-day)"
+        required: true
+
+concurrency:
+  group: reel-publish
+  cancel-in-progress: false
+
+jobs:
+  reel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: 의존성 설치
+        run: pip install "requests>=2.31,<3"
+      - name: GitHub Pages에 영상이 올라올 때까지 대기
+        run: |
+          url="${{ vars.PAGES_BASE }}/reels/${{ inputs.as_of }}.mp4"
+          for i in $(seq 1 30); do
+            code=$(curl -s -o /dev/null -w "%{http_code}" "$url")
+            echo "$url -> $code"; [ "$code" = "200" ] && exit 0; sleep 20
+          done
+          echo "영상 URL이 열리지 않습니다"; exit 1
+      - name: 릴스 발행
+        env:
+          PAGES_BASE: ${{ vars.PAGES_BASE }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT: ${{ secrets.TG_CHAT }}
+        run: python reel_publish.py "${{ inputs.draft_date }}" "${{ inputs.as_of }}"

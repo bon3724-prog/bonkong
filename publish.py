@@ -198,6 +198,28 @@ def publish_instagram(urls, caption):
     print(f"[인스타] 발행 완료 id={res['id']}")
 
 
+def publish_reel(video_url, caption):
+    """세로 영상(공개 URL)을 릴스로 발행. 영상 처리에 시간이 걸려 대기 시간을 길게 둔다."""
+    uid, token = clean_secret(os.environ["IG_USER_ID"]), clean_secret(os.environ["IG_TOKEN"])
+    IG_API = ig_api(token)
+    if token.startswith("IG"):
+        uid = "me"
+    res = post(f"{IG_API}/{uid}/media", {
+        "media_type": "REELS",
+        "video_url": video_url,
+        "caption": caption,
+        "share_to_feed": "true",
+        "access_token": token,
+    })
+    wait_ready(res["id"], token, timeout=900)
+    pub = post(f"{IG_API}/{uid}/media_publish", {
+        "creation_id": res["id"],
+        "access_token": token,
+    })
+    print(f"[인스타] 릴스 발행 완료 id={pub['id']}")
+    return pub["id"]
+
+
 # ── 토큰 갱신 ───────────────────────────────────────────
 def refresh_tokens():
     """장기 토큰은 60일이면 만료된다. 매일 갱신 호출을 걸어두면 만료되지 않는다.
