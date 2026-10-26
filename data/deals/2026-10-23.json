@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-23",
+  "created_at": "2026-10-22T22:50+09:00",
+  "status": "draft",
+  "headline": "오늘 마감 신청 1가지",
+  "items": [
+    {
+      "category": "신청 마감",
+      "title": "코로나 백신 피해보상 재심의",
+      "who": "특별법 시행(25.10.23) 전 보상 결정 받은 분",
+      "benefit": "완화된 기준으로 피해보상 재심의 신청 가능",
+      "deadline": "2026-10-23",
+      "deadline_note": "1회 한정, 법원 확정판결 받은 경우 제외",
+      "how": "주소지 관할 보건소 방문, 이의신청서 제출",
+      "source_name": "질병관리청 보도자료",
+      "source_url": "https://www.kdca.go.kr/bbs/kdca/42/312976/artclView.do",
+      "checked": "2026-10-22 공식 페이지 확인"
+    }
+  ]
+}

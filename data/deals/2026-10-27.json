@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-27",
+  "created_at": "2026-10-26T21:50+09:00",
+  "status": "draft",
+  "headline": "이번 주 할인·지원 3가지",
+  "items": [
+    {
+      "category": "할인",
+      "title": "11번가 십일절 예약구매",
+      "who": "11번가 이용 고객",
+      "benefit": "로보락 로봇청소기 59만원 등 200여 종 특가",
+      "deadline": "2026-10-31",
+      "deadline_note": "11/1 자동 결제, 한정 수량",
+      "how": "11번가 앱·웹 예약구매에서 사전예약",
+      "source_name": "11번가 공식 보도자료",
+      "source_url": "https://www.11stcorp.com/pr/detail?contentId=1844",
+      "checked": "2026-10-26 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "숙박세일 페스타 할인권",
+      "who": "비수도권 숙소 예약자(세종·충북 제외)",
+      "benefit": "1박 2만~3만원, 14만원 이상 연박 7만원 할인",
+      "deadline": "2026-11-08",
+      "deadline_note": "매일 10시 선착순, 소진 시 종료",
+      "how": "참여 온라인 여행사에서 할인권 발급",
+      "source_name": "한국관광공사 숙박세일 페스타",
+      "source_url": "https://ktostay.visitkorea.or.kr/",
+      "checked": "2026-10-26 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "쓱데이 SSG.COM 쿠폰",
+      "who": "SSG.COM 쇼핑 고객",
+      "benefit": "1만원 이상 12% 할인 쿠폰(최대 5만원)",
+      "deadline": "2026-11-08",
+      "deadline_note": "10/30(금) 시작",
+      "how": "행사 기간 SSG.COM에서 쿠폰 받아 결제",
+      "source_name": "SSG.COM 쓱데이 공식 안내",
+      "source_url": "https://www.ssg.com/hub/ssgday-2026-info",
+      "checked": "2026-10-26 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    118,
+    119,
+    120,
+    121,
+    122,
+    123
+  ],
+  "tg_sent_at": 1793017413
+}
