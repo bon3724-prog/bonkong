@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-28",
+  "created_at": "2026-10-27T22:50+09:00",
+  "status": "draft",
+  "headline": "코그페 할인·환급 3가지",
+  "items": [
+    {
+      "category": "지원금",
+      "title": "서울사랑상품권 5% 추가 페이백",
+      "who": "광역·25개 자치구 서울사랑상품권 사용자",
+      "benefit": "결제액 5% 추가 페이백, 최대 15% 혜택",
+      "deadline": "2026-11-15",
+      "deadline_note": "10/29 시작, 예산 소진 시 조기 종료",
+      "how": "서울사랑상품권 결제 시 별도 신청 없이 지급",
+      "source_name": "서울시(내 손안에 서울)",
+      "source_url": "https://mediahub.seoul.go.kr/archives/2019868",
+      "checked": "2026-10-27 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "한우 최대 50% 할인",
+      "who": "누구나",
+      "benefit": "한우 최대 50% 할인 판매",
+      "deadline": "2026-11-08",
+      "deadline_note": "10/28부터, 한우먹는 날(11/1) 전후",
+      "how": "전국 유통업체에서 구매",
+      "source_name": "정책브리핑(코리아 그랜드 페스티벌)",
+      "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148974363",
+      "checked": "2026-10-27 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "김·새우젓·천일염 최대 50%",
+      "who": "누구나",
+      "benefit": "김·새우젓·천일염 등 수산물 최대 50% 할인",
+      "deadline": "2026-11-29",
+      "deadline_note": "10/28부터",
+      "how": "전국 마트·공영홈쇼핑 등에서 구매",
+      "source_name": "정책브리핑(코리아 그랜드 페스티벌)",
+      "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148974363",
+      "checked": "2026-10-27 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    129,
+    130
+  ],
+  "tg_sent_at": 1793108146
+}
