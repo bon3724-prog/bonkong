@@ -7,7 +7,7 @@ deals_draft.py — '오늘 놓치면 손해 보는 정보' 초안 만들기 (PC,
 4. deals_video.py로 릴스 모션그래픽 영상 생성 → docs/reels/<게시일>.mp4
    (2026-10-26부터 카드 캐러셀 대신 릴스만 올린다 — 사용자 요청. deal_cards.py는 기록용으로 남김)
 5. git 커밋·푸시 (GitHub Pages가 영상을 공개해야 인스타가 가져갈 수 있다)
-6. 텔레그램으로 영상 미리보기 + 승인 방법 전송 → 사용자가 '승인 MMDD' 답장하면 아침에 GitHub이 게시
+6. 텔레그램으로 영상 미리보기·초안 보고 → 아침에 GitHub이 자동 게시('취소 MMDD'면 안 올림, 2026-10-28 사용자 요청)
 
 게시일: 정오 이후 실행이면 내일, 그 전이면 오늘.
 사용:  python deals_draft.py            (기본)
@@ -82,7 +82,7 @@ def tg_call(token, method, fields, files=()):
 
 
 def send_preview(d, video):
-    """릴스 영상 미리보기 + 승인 안내. 보낸 메시지 id 목록을 돌려준다."""
+    """릴스 영상 미리보기 + 초안 보고(아침 자동 게시 안내). 보낸 메시지 id 목록을 돌려준다."""
     token, chat = tg_keys()
     if not token or not chat:
         log("텔레그램 키가 없어 미리보기를 못 보냈어요 (news-alert/config.env 확인)")
@@ -94,8 +94,8 @@ def send_preview(d, video):
     lines = [f"🎬 {d['date']} 인스타 '놓치면 손해' 릴스 초안 ({len(d['items'])}개)"]
     for i, it in enumerate(d["items"], 1):
         lines.append(f"{i}. [{it['category']}] {it['title']} — 마감 {it['deadline']}\n   {it['source_url']}")
-    lines.append(f"\n올려도 되면 '승인 {mmdd}' 라고 보내 주세요 (이 메시지에 '승인' 답장도 됨).\n"
-                 f"올리지 않으려면 '취소 {mmdd}'.\n승인하면 아침에 GitHub이 인스타에 올려요(낮 12시 반쯤까지 승인 가능).")
+    lines.append(f"\n내일 아침 6시 40분쯤(GitHub 사정으로 늦어질 수 있음) 자동으로 인스타에 올라가요.\n"
+                 f"틀린 내용이 있어 올리지 않으려면 그 전에 '취소 {mmdd}' 라고 보내 주세요 (이 메시지에 '취소' 답장도 됨).")
     res = tg_call(token, "sendMessage", {"chat_id": chat, "text": "\n".join(lines)[:4000],
                                          "disable_web_page_preview": "true"})
     ids.append(res["result"]["message_id"])
@@ -249,7 +249,7 @@ def main():
         time.sleep(10)
     if code:
         log(f"git push 실패: {out[-300:]}")
-        send_text(f"⚠️ {target} 인스타 초안을 GitHub에 올리지 못했어요. 승인해도 게시되지 않으니 PC를 확인해 주세요.")
+        send_text(f"⚠️ {target} 인스타 초안을 GitHub에 올리지 못했어요. 내일 아침 게시되지 않으니 PC를 확인해 주세요.")
         return
     log("초안 푸시·미리보기 전송 완료")
 

@@ -1,21 +1,19 @@
 """
-deals_publish.py — 승인된 '오늘 놓치면 손해 보는 정보' 릴스 영상을 인스타그램에 발행 (GitHub Actions)
+deals_publish.py — '오늘 놓치면 손해 보는 정보' 릴스 영상을 아침에 인스타그램에 자동 발행 (GitHub Actions)
 (2026-10-26부터 카드 캐러셀 대신 릴스만 올린다 — 사용자 요청)
+(2026-10-28부터 승인 없이 자동 게시 — 사용자 요청. 밤 미리보기는 보고용)
 
 흐름: PC(deals_draft.py)가 전날 밤 data/deals/<날짜>.json + 릴스 영상(docs/reels/<날짜>.mp4)을 만들어 푸시하고
-      텔레그램으로 미리보기를 보낸다 → 사용자가 '승인 MMDD'(또는 미리보기에 답장 '승인')
-      → 이 스크립트가 아침에 승인 여부를 확인해 발행한다.
+      텔레그램으로 미리보기·초안을 보고한다 → 이 스크립트가 아침 첫 실행에 바로 발행한다.
+      (첫 실행이 실패하면 다음 실행이 다시 시도)
 
-승인 방법(둘 중 하나):
-  1) 텔레그램: '승인 1023' 이라고 보내거나, 미리보기 메시지에 '승인'이라고 답장
-  2) GitHub: data/deals/<날짜>.json 의 "status" 를 "approved" 로 수정
-취소: 텔레그램 '취소 1023' (또는 미리보기에 답장 '취소')
+멈추고 싶을 때(비상 브레이크): 텔레그램 '취소 1023' (또는 미리보기에 답장 '취소'),
+  또는 GitHub data/deals/<날짜>.json 의 "status" 를 "cancelled" 로 수정 — 게시 전이어야 한다.
 
-상태(status): draft → approved → posted   /  cancelled, skipped(마지막 실행까지 미승인)
-인스타 토큰 갱신은 승인 여부와 관계없이 매 실행마다 한다(60일 만료 방지).
+상태(status): draft → posted   /  cancelled
+인스타 토큰 갱신은 매 실행마다 한다(60일 만료 방지).
 
 환경변수: PAGES_BASE, IG_USER_ID, IG_TOKEN, TG_TOKEN, TG_CHAT, DRY_RUN=1(발행 없이 확인)
-         LAST_RUN=1 이면 이번 실행이 그날 마지막 시도(미승인이면 skipped 처리하고 알림)
 """
 
 import os
@@ -57,7 +55,7 @@ def notify(text):
 
 
 def tg_decision(d):
-    """텔레그램에서 이 날짜에 대한 마지막 결정('승인'/'취소')을 찾는다. 없으면 None."""
+    """텔레그램에서 이 날짜에 대한 마지막 결정('승인'/'취소')을 찾는다. 없으면 None. (지금은 '취소'만 의미 있음)"""
     if not tg_ok():
         return None
     chat = clean_secret(os.environ["TG_CHAT"])
@@ -130,7 +128,7 @@ def save(path, d):
 def main():
     now = datetime.datetime.now(KST)
     today = now.date().isoformat()
-    # 오전에 여러 번 돈다. 낮 12시 이후 실행(=마지막 시도)이면 미승인 시 건너뛰고 알린다
+    # 오전에 여러 번 돈다(첫 실행 실패 대비). 마지막 실행인데도 초안이 없으면 알린다
     last = os.environ.get("LAST_RUN") == "1" or now.hour >= 12
 
     if not DRY and configured("IG_TOKEN"):
@@ -149,19 +147,11 @@ def main():
         print(f"{today} 상태가 {status} — 할 일 없음")
         return
 
-    decision = "승인" if status == "approved" else tg_decision(d)
-    if decision == "취소":
+    if tg_decision(d) == "취소":
         d["status"] = "cancelled"
         save(path, d)
         notify(f"🗑 {today} 인스타 게시를 취소했어요.")
         print("취소됨")
-        return
-    if decision != "승인":
-        print(f"{today} 아직 승인 전")
-        if last and not DRY:
-            d["status"] = "skipped"
-            save(path, d)
-            notify(f"⏭ {today} 인스타 릴스가 승인되지 않아 오늘은 게시하지 않았어요.")
         return
 
     require_env("PAGES_BASE")

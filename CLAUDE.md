@@ -3,18 +3,19 @@
 > **2026-10-22부터 주제 변경: "오늘 놓치면 손해 보는 정보 (지원금·신청 마감·할인)"**
 > 운세 자동 발행은 중단했다(아래 운세 설명과 generate.py·cards.py는 기록용으로 남김. `publish.py`의 인스타 발행·토큰 갱신 함수는 새 흐름에서도 그대로 쓴다).
 >
-> **새 흐름 — 확인 후 게시**
+> **새 흐름 — 밤 보고 후 아침 자동 게시 (2026-10-28 사용자 요청으로 승인 단계 제거)**
 > 1. 밤 22:30 PC 작업 스케줄러 `InstaDealsDraft` → `deals_draft.py`
 >    - 최근 뉴스 묶음(`blog/news-report/data/*_digest.md`, 6시간 넘게 오래되면 `collect.py`로 새로 수집)을 근거로
 >      Claude(`claude -p`, 지시문 `prompts/deals.md`)가 3~5개를 골라 **공식 페이지로 확인**해 `data/deals/<게시일>.json` 저장
 >    - 검사(빈 칸·분류·마감 지난 항목 제거) → `deals_video.py`로 **릴스 모션그래픽 영상**(1080x1920, 인트로+항목별+마무리, 마무리에 트렌드체크인 블로그 blog.naver.com/roll_money 안내) → `docs/reels/<게시일>.mp4` → 커밋·푸시(GitHub Pages)
->    - 텔레그램(news-alert 봇)으로 영상 미리보기 + "승인 MMDD / 취소 MMDD" 안내
+>    - 텔레그램(news-alert 봇)으로 영상 미리보기·초안 보고 + "아침 자동 게시, 막으려면 취소 MMDD" 안내
 >    - **2026-10-26부터 카드 캐러셀은 올리지 않고 릴스만 올린다(사용자 요청).** `deal_cards.py`는 기록용. 음성은 edge-tts, 막히면 음성 없이 만든다.
 > 2. 아침 GitHub Actions `daily.yml`(06:40·08:40·10:40·12:40 KST 시도) → `deals_publish.py`
->    - 텔레그램 '승인 MMDD'(또는 미리보기 답장 '승인') 또는 JSON `status: approved`면 인스타 **릴스** 발행(`publish.publish_reel`) → `posted`. 캡션 끝에 트렌드체크인 블로그 안내
+>    - 첫 실행에서 승인 없이 인스타 **릴스** 발행(`publish.publish_reel`) → `posted`(실패하면 다음 실행이 재시도). 캡션 끝에 트렌드체크인 블로그 안내
+>    - 비상 브레이크: 게시 전에 텔레그램 '취소 MMDD'(또는 미리보기 답장 '취소') 또는 JSON `status: cancelled`면 안 올림
 >    - 수동 발행: GitHub Actions `reel.yml`(workflow_dispatch, 초안일·기준일 입력) → `reel_publish.py`. 사용자가 직접 요청할 때만
->    - 낮 12시 이후 마지막 시도까지 미승인이면 `skipped` + 알림. 인스타 토큰 갱신은 매 실행마다(승인 여부 무관)
-> - **사람 승인 없이 게시하지 않는다.** 이 원칙을 바꾸지 말 것(마감·금액 오류는 독자 실제 손해).
+>    - 인스타 토큰 갱신은 매 실행마다
+> - 사람 확인은 밤 미리보기로만 한다(사용자 선택). 마감·금액 오류는 독자 실제 손해이므로 초안 단계의 공식 페이지 확인·검사는 약하게 만들지 말 것.
 > - 저장소가 공개라 Claude 원문 출력·로그(`data/deals/*_claude.txt`, `draft.log`)는 .gitignore. 토큰은 GitHub Secrets(IG_TOKEN, IG_USER_ID, TG_TOKEN, TG_CHAT)에만.
 > - PC가 밤에 꺼져 있으면 초안이 안 생기고, 그날은 게시하지 않는다(알림만).
 
