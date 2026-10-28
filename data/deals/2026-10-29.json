@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-29",
+  "created_at": "2026-10-28T22:50+09:00",
+  "status": "draft",
+  "headline": "이번 주 챙길 혜택 2가지",
+  "items": [
+    {
+      "category": "지원금",
+      "title": "경기지역화폐 5% 추가 캐시백",
+      "who": "경기지역화폐로 결제하는 누구나",
+      "benefit": "결제액 5% 추가 캐시백 (기존 시군 인센티브와 별도)",
+      "deadline": "2026-11-15",
+      "deadline_note": "10/29 시작(시군별 시작일 다를 수 있…",
+      "how": "경기지역화폐로 결제, 조건은 시군 담당부서 확인",
+      "source_name": "경기도 보도자료",
+      "source_url": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=s017&number=71832&subject_Code=BO01",
+      "checked": "2026-10-28 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "샤갈전 얼리버드 30% 할인",
+      "who": "퐁피두센터 한화 샤갈전 관람 예정자",
+      "benefit": "입장권 25,000원→17,500원 (30% 할인)",
+      "deadline": "2026-11-03",
+      "deadline_note": "3,000매 한정·1인 4매, 사용기간 1…",
+      "how": "퐁피두센터 한화 홈페이지 전시 페이지에서 예매",
+      "source_name": "퐁피두센터 한화 공식 홈페이지",
+      "source_url": "https://www.centrepompidou-hanwha.kr/exhibition/detail?seq=177&status=INACTIVE&pageActive=1&pageInactive=1&pageEnded=1",
+      "checked": "2026-10-28 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    137,
+    138
+  ],
+  "tg_sent_at": 1793194452
+}
