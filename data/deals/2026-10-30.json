@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-30",
+  "created_at": "2026-10-29T23:10+09:00",
+  "status": "draft",
+  "headline": "다음 주 상품권 할인 2가지",
+  "items": [
+    {
+      "category": "지원금",
+      "title": "디지털 온누리상품권 10% 할인",
+      "who": "디지털 온누리상품권 구매자 누구나",
+      "benefit": "할인율 평소 7% → 10%로 상향 판매",
+      "deadline": "2026-11-06",
+      "deadline_note": "11월 2일 시작, 5일간만",
+      "how": "디지털 온누리상품권 앱에서 구매",
+      "source_name": "정부 합동 보도자료(중소벤처기업부)",
+      "source_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156786694",
+      "checked": "2026-10-29 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "모바일 농할상품권 20% 할인",
+      "who": "모바일 농할상품권 구매자",
+      "benefit": "농축산물 상품권 20% 할인된 가격에 판매",
+      "deadline": "2026-11-15",
+      "deadline_note": "11월 2일 판매 시작",
+      "how": "11월 2일부터 모바일 상품권으로 구매",
+      "source_name": "정부 합동 보도자료(농림축산식품부)",
+      "source_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156786694",
+      "checked": "2026-10-29 공식 페이지 확인"
+    }
+  ]
+}
