@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-03",
+  "created_at": "2026-11-02T23:14+09:00",
+  "status": "draft",
+  "headline": "청년 25만원·궁궐 무료 입장",
+  "items": [
+    {
+      "category": "지원금",
+      "title": "경기 청년기본소득 4분기 신청",
+      "who": "경기도 3년 이상 거주 24세 청년",
+      "benefit": "분기 25만원 지역화폐 (연 최대 100만원)",
+      "deadline": "2026-12-01",
+      "deadline_note": "18시까지, 01.10.2~02.10.1생…",
+      "how": "잡아바 어플라이(apply.jobaba.net) 온라인",
+      "source_name": "경기도청",
+      "source_url": "https://www.gg.go.kr/contents/contents.do?ciIdx=1037&menuId=2736",
+      "checked": "2026-11-02 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "4대궁·종묘·조선왕릉 무료 개방",
+      "who": "누구나",
+      "benefit": "경복궁 등 4대궁·종묘·조선왕릉 입장료 무료",
+      "deadline": "2026-11-15",
+      "deadline_note": "창덕궁 후원 특별관람·휴관일 제외",
+      "how": "현장 방문해 바로 입장 (종묘는 일반관람)",
+      "source_name": "국가유산청 궁능유적본부",
+      "source_url": "https://royal.khs.go.kr/ROYAL/contents/R403000000.do?id=20260922161754771774&schM=view",
+      "checked": "2026-11-02 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    169,
+    170
+  ],
+  "tg_sent_at": 1793629110
+}
