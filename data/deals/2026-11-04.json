@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-04",
+  "created_at": "2026-11-03T19:10+09:00",
+  "status": "draft",
+  "headline": "마감 임박 혜택 3가지",
+  "items": [
+    {
+      "category": "할인",
+      "title": "숙박세일 페스타 할인권",
+      "who": "2006년생까지 참여, 1인 1매",
+      "benefit": "7만원 이상 3만원·2만원 이상 2만원 할인",
+      "deadline": "2026-11-08",
+      "deadline_note": "매일 10시 선착순, 입실도 11/8까지,…",
+      "how": "참여 여행앱에서 할인권 받고 예약",
+      "source_name": "한국관광공사 대한민국 구석구석",
+      "source_url": "https://korean.visitkorea.or.kr/travelmonth/benefits/stay.do",
+      "checked": "2026-11-03 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "올리브영 블랙프라이데이",
+      "who": "올리브영 온·오프라인 이용 고객",
+      "benefit": "할인 쿠폰·특가·블프라이즈 박스 제공",
+      "deadline": "2026-11-07",
+      "deadline_note": "매장별 라스트 픽 할인 품목은 매장마다 다름",
+      "how": "올리브영 앱·온라인몰·매장",
+      "source_name": "올리브영 공식 뉴스룸",
+      "source_url": "https://corp.oliveyoung.com/ko/newsroom/editorial/338",
+      "checked": "2026-11-03 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "근로·자녀장려금 기한 후 신청",
+      "who": "소득·재산 요건 맞는 근로·자녀 가구",
+      "benefit": "근로 최대 330만원, 자녀 1명당 최대 100만원",
+      "deadline": "2026-12-01",
+      "deadline_note": "기한 후 신청은 산정액의 95%만 지급",
+      "how": "홈택스 또는 ARS 1544-9944",
+      "source_name": "국세청",
+      "source_url": "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40397&cntntsId=238977",
+      "checked": "2026-11-03 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    204,
+    205
+  ],
+  "tg_sent_at": 1793699516
+}
