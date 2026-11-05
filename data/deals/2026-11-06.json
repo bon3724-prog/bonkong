@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-06",
+  "created_at": "2026-11-05T22:10+09:00",
+  "status": "draft",
+  "headline": "이번 달 챙길 혜택 4가지",
+  "items": [
+    {
+      "category": "할인",
+      "title": "올리브영 블프 내일 종료",
+      "who": "올리브영 고객 누구나",
+      "benefit": "할인 쿠폰·특가·증정 혜택 (온·오프라인)",
+      "deadline": "2026-11-07",
+      "deadline_note": "라스트 픽 할인 품목은 매장마다 다름",
+      "how": "올리브영 앱·온라인몰·매장에서 구매",
+      "source_name": "올리브영 공식 뉴스룸",
+      "source_url": "https://corp.oliveyoung.com/ko/newsroom/editorial/338",
+      "checked": "2026-11-05 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "대한민국 수산대전 할인",
+      "who": "수산물 사는 소비자 누구나",
+      "benefit": "참여 마트·온라인몰 수산물 할인 쿠폰",
+      "deadline": "2026-11-22",
+      "deadline_note": "할인율·한도는 참여처별로 다름",
+      "how": "fsale.kr에서 참여처·쿠폰 확인",
+      "source_name": "정책브리핑(문화체육관광부)·대한민국 수산대전",
+      "source_url": "https://m.korea.kr/news/policyNewsView.do?newsId=148974520",
+      "checked": "2026-11-05 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "산림복지 이용권 사용 마감",
+      "who": "2026년 산림복지 이용권 선정자",
+      "benefit": "휴양림·숲체원 등 숙박비·프로그램비 결제",
+      "deadline": "2026-11-30",
+      "deadline_note": "11월 30일(월)까지 사용",
+      "how": "KB국민카드로 등록 시설에서 결제",
+      "source_name": "한국산림복지진흥원 산림복지서비스이용권",
+      "source_url": "https://www.forestcard.or.kr/",
+      "checked": "2026-11-05 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "에너지바우처 연말 신청 마감",
+      "who": "기초생활수급 가구 중 노인·영유아 등 포함",
+      "benefit": "1인 29만5,200원~4인 이상 70만1,300원",
+      "deadline": "2026-12-31",
+      "deadline_note": "12월 말 2~3일 신청 중단 기간 있음",
+      "how": "읍면동 행정복지센터 방문·복지로 신청",
+      "source_name": "한국에너지공단 에너지바우처",
+      "source_url": "https://www.energyv.or.kr/info/support_info.do",
+      "checked": "2026-11-05 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    219,
+    220
+  ],
+  "tg_sent_at": 1793883006
+}
