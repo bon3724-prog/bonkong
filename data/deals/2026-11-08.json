@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-08",
+  "created_at": "2026-11-07T18:00+09:00",
+  "status": "draft",
+  "headline": "이번 달 챙길 혜택 3가지",
+  "items": [
+    {
+      "category": "할인",
+      "title": "엽떡데이 9,900원",
+      "who": "엽떡앱 회원 누구나",
+      "benefit": "엽기메뉴(떡볶이/오뎅/반반) 9,900원",
+      "deadline": "2026-11-11",
+      "deadline_note": "11일 시작, 선착순 11만명 소진 시 종료",
+      "how": "엽떡앱 결제 단계에서 쿠폰 조회·적용",
+      "source_name": "동대문엽기떡볶이 공식 이벤트",
+      "source_url": "https://www.yupdduk.com/sub/event/yup-event-detail?pnum=1&row=6&opt_ev=&eventno=2026100003&f_stype=&f_sval=",
+      "checked": "2026-11-07 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "스포츠강좌이용권 신청",
+      "who": "5~18세 수급·차상위·한부모 가구 등",
+      "benefit": "매월 10만 5천원 내 수강료, 최대 126만원",
+      "deadline": "2026-11-27",
+      "deadline_note": "9일부터 접수, 27일 23:59까지, 선…",
+      "how": "이용권 누리집 또는 시·군·구청·주민센터",
+      "source_name": "국민체육진흥공단 스포츠강좌이용권",
+      "source_url": "https://svoucher.kspo.or.kr/svoucher/bbs/B0000051/view.do?menuNo=20&topMenuNo=5&nttId=64394",
+      "checked": "2026-11-07 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "문화누리카드 발급 마감",
+      "who": "6세 이상 기초수급자·차상위계층",
+      "benefit": "1인당 연 15만원, 13~18·60~64세 1만원 추가",
+      "deadline": "2026-11-30",
+      "deadline_note": "예산 소진 시 조기 마감, 사용은 12월 …",
+      "how": "주민센터·누리집·모바일앱에서 신청",
+      "source_name": "문화체육관광부",
+      "source_url": "https://www.mcst.go.kr/site/s_policy/subPolicy/cultureart/cultureart06.jsp",
+      "checked": "2026-11-07 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    237,
+    238
+  ],
+  "tg_sent_at": 1794042628
+}
