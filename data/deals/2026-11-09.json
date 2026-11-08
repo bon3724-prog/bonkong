@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-09",
+  "created_at": "2026-11-08T22:36+09:00",
+  "status": "draft",
+  "headline": "11월 마감 정보 2가지",
+  "items": [
+    {
+      "category": "신청 마감",
+      "title": "제81회 한국사능력검정시험 접수",
+      "who": "한국사 심화 시험 응시 희망자",
+      "benefit": "11월 28일(토) 10:00 심화 시험 응시",
+      "deadline": "2026-11-10",
+      "deadline_note": "17시까지. 잔여 좌석이 있으면 11.11…",
+      "how": "한국사능력검정시험 누리집에서 원서접수",
+      "source_name": "국사편찬위원회 한국사능력검정시험",
+      "source_url": "https://www.historyexam.go.kr/",
+      "checked": "2026-11-08 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "인구감소지역 기차여행 쿠폰",
+      "who": "41개 인구감소지역 자유여행상품 구매자",
+      "benefit": "구매 승차권 운임 100% 상당 철도 할인쿠폰",
+      "deadline": "2026-11-26",
+      "deadline_note": "11.28 출발 상품까지 예약 가능, 예산…",
+      "how": "코레일 앱·홈페이지 구매 후 관광지 방문 인증",
+      "source_name": "여행가는 달(한국관광공사), 코레일",
+      "source_url": "https://korean.visitkorea.or.kr/travelmonth/benefits/traffic.do",
+      "checked": "2026-11-08 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    243,
+    244
+  ],
+  "tg_sent_at": 1794145220
+}
