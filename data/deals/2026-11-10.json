@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-10",
+  "created_at": "2026-11-09T22:59+09:00",
+  "status": "draft",
+  "headline": "마감 앞둔 혜택 4가지",
+  "items": [
+    {
+      "category": "할인",
+      "title": "11번가 십일절 내일 종료",
+      "who": "11번가 이용자",
+      "benefit": "4만원 이상 3천원·5만원 이상 4천원 쿠폰",
+      "deadline": "2026-11-11",
+      "deadline_note": "",
+      "how": "11번가 행사 기간 중 쿠폰 발급",
+      "source_name": "11번가 공식 보도자료",
+      "source_url": "https://www.11stcorp.com/pr/detail?contentId=1846",
+      "checked": "2026-11-09 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "농할상품권 20% 할인 구매",
+      "who": "전 연령 소비자",
+      "benefit": "액면가 20% 선할인, 할인 한도 최대 10만 원",
+      "deadline": "2026-11-15",
+      "deadline_note": "전 연령 구매 기간 11/9~15",
+      "how": "모바일 상품권 구매, 전통시장 등에서 사용",
+      "source_name": "농림축산식품부(정책브리핑)",
+      "source_url": "https://m.korea.kr/news/policyNewsView.do?newsId=148974868",
+      "checked": "2026-11-09 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "대구로페이 추가 캐시백",
+      "who": "대구로페이 이용자",
+      "benefit": "결제액 5% 추가 캐시백, 착한가격업소 최대 10%",
+      "deadline": "2026-11-15",
+      "deadline_note": "예산 소진 시 조기 종료",
+      "how": "대구로페이 결제, 비할인 충전분도 동일",
+      "source_name": "대구광역시",
+      "source_url": "https://www.daegu.go.kr/index.do?menu_id=00000854&menu_link=/icms/bbs/selectBoardArticle.do&bbsId=BBS_00029&nttId=828698",
+      "checked": "2026-11-09 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "김장재료 최대 40% 할인",
+      "who": "대형·중소형마트 등 이용 소비자",
+      "benefit": "김장재료 전 품목·수육용 돼지고기 최대 40%",
+      "deadline": "2026-12-02",
+      "deadline_note": "10월 29일부터 진행 중",
+      "how": "대형·중소형마트 등에서 구매",
+      "source_name": "농림축산식품부(정책브리핑)",
+      "source_url": "https://m.korea.kr/news/policyNewsView.do?newsId=148974868",
+      "checked": "2026-11-09 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    256,
+    257
+  ],
+  "tg_sent_at": 1794233138
+}
