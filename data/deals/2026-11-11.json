@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-11",
+  "created_at": "2026-11-10T18:04+09:00",
+  "status": "draft",
+  "headline": "부산·강릉 지원금 2가지",
+  "items": [
+    {
+      "category": "지원금",
+      "title": "부산 전통시장 온누리 환급",
+      "who": "부산 전통시장 107곳 참여 점포 구매 고객",
+      "benefit": "4만 원 이상 구매 시 1만 원, 7만 원 이상 2만 원 환급",
+      "deadline": "2026-11-14",
+      "deadline_note": "11.12~14 사흘간, 1인당 행사 기간…",
+      "how": "같은 시장 영수증 합산해 환급 장소 87곳에서",
+      "source_name": "부산광역시 보도자료",
+      "source_url": "https://www.busan.go.kr/nbtnewsBU/1763060",
+      "checked": "2026-11-10 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "강릉시 민생안정지원금 10만원",
+      "who": "9.30 기준 강릉 거주 시민·영주권자·결혼이민자",
+      "benefit": "1인당 10만 원 강릉페이 지급 (27.2.28까지 사용)",
+      "deadline": "2026-12-31",
+      "deadline_note": "마감일 온라인 오후 6시까지, 주민센터는 …",
+      "how": "강릉페이 앱 또는 주소지 읍면동 주민센터",
+      "source_name": "강릉시 공식 누리집",
+      "source_url": "https://www.gn.go.kr/www/selectBbsNttView.do?key=6852&bbsNo=1630&nttNo=239103",
+      "checked": "2026-11-10 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    267,
+    268
+  ],
+  "tg_sent_at": 1794301683
+}
