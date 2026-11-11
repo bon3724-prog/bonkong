@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-12",
+  "created_at": "2026-11-11T22:28+09:00",
+  "status": "draft",
+  "headline": "이번 주 챙길 혜택 3가지",
+  "items": [
+    {
+      "category": "할인",
+      "title": "G마켓 빅스마일데이 내일 종료",
+      "who": "G마켓 이용 고객",
+      "benefit": "특가 상품 3,000여 개 할인 행사",
+      "deadline": "2026-11-13",
+      "deadline_note": "종료 시각·쿠폰 조건은 G마켓 앱에서 확인",
+      "how": "G마켓 앱·웹 빅스마일데이 기획전",
+      "source_name": "G마켓 뉴스룸",
+      "source_url": "https://news.gmarket.com/",
+      "checked": "2026-11-11 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "경기도 청년기본소득 4분기",
+      "who": "경기도 거주 24세 청년(성남·고양 제외)",
+      "benefit": "분기 25만 원 지역화폐 지급",
+      "deadline": "2026-12-01",
+      "deadline_note": "18시까지, 3년 이상 계속 또는 합산 1…",
+      "how": "잡아바 어플라이에서 온라인 신청",
+      "source_name": "경기도 경기청년포털",
+      "source_url": "https://youth.gg.go.kr/gg/intro/notice.do?mode=view&articleNo=10501&article.offset=0&articleLimit=10",
+      "checked": "2026-11-11 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "파리바게뜨 케이크 사전예약",
+      "who": "홀리데이 케이크 사전예약 고객",
+      "benefit": "홀리데이 케이크 최대 30% 혜택",
+      "deadline": "2026-12-19",
+      "deadline_note": "채널별 혜택 다름",
+      "how": "파바앱·해피오더 등에서 사전예약",
+      "source_name": "파리바게뜨 공식 홈페이지",
+      "source_url": "https://www.paris.co.kr/promotion/holiday-2026-preorder/",
+      "checked": "2026-11-11 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    277,
+    278
+  ],
+  "tg_sent_at": 1794403983
+}
