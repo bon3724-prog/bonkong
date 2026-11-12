@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-13",
+  "created_at": "2026-11-12T19:50+09:00",
+  "status": "draft",
+  "headline": "이번 주 챙길 혜택 4가지",
+  "items": [
+    {
+      "category": "할인",
+      "title": "배스킨라빈스 케이크 사전예약",
+      "who": "해피오더·배라앱 이용자",
+      "benefit": "크리스마스 케이크 10종 최대 40% 혜택",
+      "deadline": "2026-11-18",
+      "deadline_note": "일부 점포 제외, 수령 12/21~25",
+      "how": "해피오더·배라앱에서 사전예약",
+      "source_name": "배스킨라빈스 공식 보도자료",
+      "source_url": "https://www.baskinrobbins.co.kr/information-center/press/view.php?seq=1494",
+      "checked": "2026-11-12 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "U+ 유플투쁠 PLUS WEEK",
+      "who": "LG유플러스 고객(U+one 앱)",
+      "benefit": "스타벅스 아메리카노 1+1·롯데월드 47% 할인",
+      "deadline": "2026-11-20",
+      "deadline_note": "11/16부터, 제휴사별 1인 1회",
+      "how": "U+one 앱에서 쿠폰 다운로드",
+      "source_name": "LG유플러스 공식 뉴스룸",
+      "source_url": "https://news.lguplus.com/23241",
+      "checked": "2026-11-12 공식 페이지 확인"
+    },
+    {
+      "category": "신청 마감",
+      "title": "서울 동행일자리 참여자 모집",
+      "who": "만 18세 이상 서울시민(소득·재산 기준)",
+      "benefit": "일급 6만 5천 원, 내년 1~6월 근무",
+      "deadline": "2026-11-23",
+      "deadline_note": "18시까지, 평일만 접수",
+      "how": "주소지 동주민센터 방문 신청",
+      "source_name": "서울시",
+      "source_url": "https://news.seoul.go.kr/economy/archives/575178",
+      "checked": "2026-11-12 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "근로장려금 기한 후 신청",
+      "who": "2025년 소득·재산 요건 맞는 가구",
+      "benefit": "가구별 최대 165만~330만 원의 95%",
+      "deadline": "2026-12-01",
+      "deadline_note": "기한 후 신청은 산정액의 95%만 지급",
+      "how": "홈택스·ARS 1544-9944 신청",
+      "source_name": "국세청",
+      "source_url": "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=238977&mi=40397",
+      "checked": "2026-11-12 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    284,
+    285
+  ],
+  "tg_sent_at": 1794479907
+}
