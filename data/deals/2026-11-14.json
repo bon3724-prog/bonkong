@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-14",
+  "created_at": "2026-11-13T21:20+09:00",
+  "status": "draft",
+  "headline": "주말 할인·지원금 3가지",
+  "items": [
+    {
+      "category": "할인",
+      "title": "홍콩반점 통영굴짬뽕 할인",
+      "who": "홍콩반점 이용객(일부 매장 제외)",
+      "benefit": "홀 12,000원→9,900원, 배민 최대 4천원 할인",
+      "deadline": "2026-11-25",
+      "deadline_note": "홀 할인은 매장 식사만(포장·배달 제외)",
+      "how": "매장 홀 주문 또는 배달의민족 주문",
+      "source_name": "더본코리아 공식 공지",
+      "source_url": "https://www.theborn.co.kr/news/",
+      "checked": "2026-11-13 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "11번가 마트대전 장바구니 쿠폰",
+      "who": "11번가 회원(마트대전 상품 구매)",
+      "benefit": "7만원 이상 구매 시 3,000원 할인 쿠폰",
+      "deadline": "2026-11-22",
+      "deadline_note": "매일 ID당 1장",
+      "how": "11번가 마트대전에서 쿠폰 받아 결제",
+      "source_name": "11번가 공식 보도자료",
+      "source_url": "https://www.11stcorp.com/",
+      "checked": "2026-11-13 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "에너지바우처 올해 신청 마감",
+      "who": "기초생활 수급 가구 중 노인·장애인 등 포함",
+      "benefit": "연 295,200원~701,300원(가구원 수별)",
+      "deadline": "2026-12-31",
+      "deadline_note": "사용기간 2027년 5월 31일까지",
+      "how": "주소지 읍·면·동 행정복지센터 신청",
+      "source_name": "에너지바우처(한국에너지공단)",
+      "source_url": "https://www.energyv.or.kr/info/support_info.do",
+      "checked": "2026-11-13 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    295,
+    296
+  ],
+  "tg_sent_at": 1794571029
+}
