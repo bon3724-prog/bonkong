@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-16",
+  "created_at": "2026-11-15T20:40+09:00",
+  "status": "draft",
+  "headline": "이달 말 끝나는 혜택 2가지",
+  "items": [
+    {
+      "category": "지원금",
+      "title": "문화누리카드 발급 마감",
+      "who": "기초생활수급자·차상위계층 6세 이상",
+      "benefit": "연 15만원 문화비(13~18세·60~64세 1만원 추가)",
+      "deadline": "2026-11-30",
+      "deadline_note": "예산 소진 시 발급 불가, 사용은 12월 …",
+      "how": "주민센터 방문 또는 누리집·앱 신청",
+      "source_name": "문화체육관광부",
+      "source_url": "https://www.mcst.go.kr/kor/s_policy/subPolicy/cultureart/cultureart06.jsp",
+      "checked": "2026-11-15 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "에버랜드 종일권 2만6천원",
+      "who": "에버랜드 앱 V9 클럽 무료 가입자",
+      "benefit": "삼성라이온즈 우승 기념 종일권 26,000원",
+      "deadline": "2026-11-30",
+      "deadline_note": "공식 안내 '이달 말까지'",
+      "how": "앱에서 V9 클럽 가입 후 스마트예약 구매",
+      "source_name": "삼성물산(에버랜드) 보도자료",
+      "source_url": "https://news.samsungcnt.com/ko/%EC%A0%84%EC%B2%B4%EA%B8%B0%EC%82%AC/%EB%A6%AC%EC%A1%B0%ED%8A%B8%EB%B6%80%EB%AC%B8/2026-11-%EC%97%90%EB%B2%84%EB%9E%9C%EB%93%9C-17%EC%9D%BC-%EC%82%BC%EC%84%B1%EB%9D%BC%EC%9D%B4%EC%98%A8%EC%A6%88%EC%99%80-%ED%8C%AC-%EC%B4%88%EC%B2%AD-%EA%B0%90%EC%82%AC-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%A7%84/",
+      "checked": "2026-11-15 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    305,
+    306
+  ],
+  "tg_sent_at": 1794741360
+}
