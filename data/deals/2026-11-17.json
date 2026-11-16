@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-17",
+  "created_at": "2026-11-16T18:40+09:00",
+  "status": "draft",
+  "headline": "이번 달 마감 스포츠 지원금",
+  "items": [
+    {
+      "category": "지원금",
+      "title": "2027 스포츠강좌이용권 신청",
+      "who": "5~18세 기초수급·차상위·한부모가족",
+      "benefit": "매월 10만 5천원 내 수강료, 최대 126만원",
+      "deadline": "2026-11-27",
+      "deadline_note": "23:59까지, 선착순 아님",
+      "how": "스포츠강좌이용권 누리집 또는 시·군·구청 방문",
+      "source_name": "국민체육진흥공단 스포츠강좌이용권 공지",
+      "source_url": "https://svoucher.kspo.or.kr/svoucher/bbs/B0000051/view.do?menuNo=20&topMenuNo=5&nttId=64394",
+      "checked": "2026-11-16 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    312,
+    313
+  ],
+  "tg_sent_at": 1794820044
+}
