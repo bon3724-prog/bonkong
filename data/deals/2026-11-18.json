@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-18",
+  "created_at": "2026-11-17T18:40+09:00",
+  "status": "draft",
+  "headline": "12월 마감 혜택 2가지",
+  "items": [
+    {
+      "category": "지원금",
+      "title": "농식품바우처 신규 신청",
+      "who": "생계급여 가구(임산부·영유아·아동·청년)",
+      "benefit": "과일·채소·우유·달걀 등 구매 바우처",
+      "deadline": "2026-12-11",
+      "deadline_note": "2025년 이용자는 재신청 없이 자동 지급",
+      "how": "행정복지센터·누리집·ARS 1551-0857",
+      "source_name": "농림축산식품부 보도자료",
+      "source_url": "https://www.mafra.go.kr/home/5109/subview.do?enc=Zm5jdDF8QEB8JTJGYmJzJTJGaG9tZSUyRjc5MiUyRjU3NjIzMyUyRmFydGNsVmlldy5kbyUzRnBhc3N3b3JkJTNEJTI2aXNWaWV3TWluZSUzRGZhbHNl",
+      "checked": "2026-11-17 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "뚜레쥬르 홀리데이 케이크 예약",
+      "who": "뚜레쥬르 앱 사전예약 고객",
+      "benefit": "홀리데이 제품 35종 최대 30% 할인",
+      "deadline": "2026-12-22",
+      "deadline_note": "픽업은 12월 18~25일 매장",
+      "how": "뚜레쥬르 앱에서 예약 후 매장 픽업",
+      "source_name": "CJ 뉴스룸(뚜레쥬르 공식 보도자료)",
+      "source_url": "https://cjnews.cj.net/?p=82414",
+      "checked": "2026-11-17 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    323,
+    324
+  ],
+  "tg_sent_at": 1794906500
+}
