@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-19",
+  "created_at": "2026-11-18T20:10+09:00",
+  "status": "draft",
+  "headline": "이번 주 마감·지원 2가지",
+  "items": [
+    {
+      "category": "신청 마감",
+      "title": "2027 유치원 일반모집 마감",
+      "who": "2027학년도 유치원 입학 희망 유아 보호자",
+      "benefit": "희망 유치원 입학 신청, 접수 순서는 선발과 무관",
+      "deadline": "2026-11-23",
+      "deadline_note": "11월 23일(월) 18시까지",
+      "how": "유보통합포털(enter.childinfo.go.kr) 신청",
+      "source_name": "유보통합포털 유치원입학 안내(전북교육청 게시)",
+      "source_url": "https://office.jbedu.kr/_mdl/popupAll/jbgse/41593.do",
+      "checked": "2026-11-18 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "진도 1박2일 여행지원금",
+      "who": "진도군 외 거주 SNS 활동자(1~4인 팀)",
+      "benefit": "1인 20만원~4인 55만원 진도아리랑상품권",
+      "deadline": "2026-12-23",
+      "deadline_note": "모집인원 충원 시 조기 마감, 여행 영상 …",
+      "how": "진도군 공지 상세페이지 QR로 신청",
+      "source_name": "진도군청 공지사항",
+      "source_url": "https://www.jindo.go.kr/home/board/B0052.cs?act=read&articleId=198937",
+      "checked": "2026-11-18 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    330,
+    331
+  ],
+  "tg_sent_at": 1794998834
+}
