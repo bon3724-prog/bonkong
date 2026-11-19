@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-20",
+  "created_at": "2026-11-19T23:40+09:00",
+  "status": "draft",
+  "headline": "곧 끝나는 할인 3가지",
+  "items": [
+    {
+      "category": "할인",
+      "title": "김장재료 최대 40% 할인",
+      "who": "대형·중소형마트에서 장보는 누구나",
+      "benefit": "김장재료 전 품목·수육용 돼지고기 최대 40%",
+      "deadline": "2026-12-02",
+      "deadline_note": "정부 지원 할인, 10월 29일부터 진행 중",
+      "how": "대형·중소형마트 등에서 구매 시 할인",
+      "source_name": "농림축산식품부·해양수산부 (정책브리핑)",
+      "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148974868",
+      "checked": "2026-11-19 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "국내선 왕복 항공권 포인트",
+      "who": "네이버 항공권으로 국내선 왕복 예약자",
+      "benefit": "1인 1만 원(제주 5천 원) 네이버페이 포인트",
+      "deadline": "2026-11-30",
+      "deadline_note": "11월 30일 탑승분까지, 예약당 4명까지…",
+      "how": "네이버 항공권에서 국내선 왕복 예약",
+      "source_name": "문화체육관광부 '여행가는 가을' (정책브리핑)",
+      "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148971932",
+      "checked": "2026-11-19 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "내일로 패스 2만 원 할인",
+      "who": "코레일 내일로 패스 구매자",
+      "benefit": "내일로 패스 2만 원 할인",
+      "deadline": "2026-11-30",
+      "deadline_note": "11월 30일 이용분까지",
+      "how": "코레일에서 내일로 패스 구매",
+      "source_name": "문화체육관광부 '여행가는 가을' (정책브리핑)",
+      "source_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148971932",
+      "checked": "2026-11-19 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    341,
+    342
+  ],
+  "tg_sent_at": 1795097879
+}
