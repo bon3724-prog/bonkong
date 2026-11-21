@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-22",
+  "created_at": "2026-11-21T18:30+09:00",
+  "status": "draft",
+  "headline": "이달 말 마감 혜택 3가지",
+  "items": [
+    {
+      "category": "지원금",
+      "title": "에너지바우처 연말 신청 마감",
+      "who": "급여 수급 세대 중 노인·영유아·장애인 등 포함",
+      "benefit": "세대원 수별 연 295,200~701,300원",
+      "deadline": "2026-12-31",
+      "deadline_note": "12월 말 2~3일 시스템 중단 있어 미리…",
+      "how": "행정복지센터 방문 또는 복지로 온라인",
+      "source_name": "한국에너지공단 에너지바우처",
+      "source_url": "https://www.energyv.or.kr/info/support_info.do",
+      "checked": "2026-11-21 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "LG전자 가전 최대 60% 할인",
+      "who": "LG전자 온·오프라인 구매 고객",
+      "benefit": "오프라인 최대 38%, 온라인 최대 60%",
+      "deadline": "2026-11-30",
+      "deadline_note": "일시불 기준, 온라인은 쿠폰·카드 청구할인…",
+      "how": "LG전자 매장·온라인에서 TV·가전 구매",
+      "source_name": "중소벤처기업부(코리아 그랜드 페스티벌)",
+      "source_url": "https://www.korea.kr/multi/visualNewsView.do?newsId=148975470",
+      "checked": "2026-11-21 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "편의점 도시락 카드 할인",
+      "who": "해당 카드로 결제하는 누구나",
+      "benefit": "CU 인기 도시락 3종 20%·세븐 비빔밥 25%",
+      "deadline": "2026-11-30",
+      "deadline_note": "CU는 농협카드, 세븐일레븐은 BC카드 결…",
+      "how": "CU·세븐일레븐 매장에서 카드 결제",
+      "source_name": "중소벤처기업부(코리아 그랜드 페스티벌)",
+      "source_url": "https://www.korea.kr/multi/visualNewsView.do?newsId=148975470",
+      "checked": "2026-11-21 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    363,
+    364
+  ],
+  "tg_sent_at": 1795252219
+}
