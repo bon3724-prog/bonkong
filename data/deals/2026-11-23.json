@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-23",
+  "created_at": "2026-11-22T18:06+09:00",
+  "status": "draft",
+  "headline": "연말 전 챙길 혜택 2가지",
+  "items": [
+    {
+      "category": "할인",
+      "title": "무신사 오프라인 무진장 세일",
+      "who": "전국 무신사 오프라인 스토어 고객",
+      "benefit": "10만원 이상 구매 시 10% 쿠폰(최대 1만원)",
+      "deadline": "2026-12-02",
+      "deadline_note": "ID당 1회 사용, 상품 쿠폰과 중복 가능",
+      "how": "무신사 오프라인 스토어에서 쿠폰 적용 결제",
+      "source_name": "무신사 공식 콘텐츠",
+      "source_url": "https://www.musinsa.com/content/1566699932019111639",
+      "checked": "2026-11-22 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "생리용품 바우처 연내 사용",
+      "who": "기초·차상위·한부모 9~24세 여성청소년",
+      "benefit": "생리용품 구입 바우처 월 14,000원",
+      "deadline": "2026-12-31",
+      "deadline_note": "남은 바우처는 2027년 1월 1일 전액 …",
+      "how": "국민행복카드 가맹점에서 생리용품 구입",
+      "source_name": "성평등가족부",
+      "source_url": "https://www.mogef.go.kr/sp/yth/sp_yth_f017.do",
+      "checked": "2026-11-22 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    374,
+    375
+  ],
+  "tg_sent_at": 1795338589
+}
