@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-27",
+  "created_at": "2026-11-26T18:30+09:00",
+  "status": "draft",
+  "headline": "오늘 마감부터 연말 접수까지",
+  "items": [
+    {
+      "category": "지원금",
+      "title": "스포츠강좌이용권 오늘 마감",
+      "who": "5~18세 기초수급·차상위·한부모 가구",
+      "benefit": "매월 10만 5천원 내 수강료, 최대 126만원",
+      "deadline": "2026-11-27",
+      "deadline_note": "23:59까지, 선착순 아님",
+      "how": "스포츠강좌이용권 누리집 또는 시군구청 방문",
+      "source_name": "국민체육진흥공단 스포츠강좌이용권 공지",
+      "source_url": "https://svoucher.kspo.or.kr/svoucher/bbs/B0000051/view.do?menuNo=20&topMenuNo=5&nttId=64394",
+      "checked": "2026-11-26 공식 페이지 확인"
+    },
+    {
+      "category": "할인",
+      "title": "파리바게뜨 성탄 케이크 사전예약",
+      "who": "파리바게뜨 케이크 사전예약 고객",
+      "benefit": "홀리데이 케이크 최대 30% 혜택",
+      "deadline": "2026-12-19",
+      "deadline_note": "채널별 할인율·일정 다름",
+      "how": "파바앱·해피오더·카카오톡 예약하기 등",
+      "source_name": "파리바게뜨 공식 프로모션",
+      "source_url": "https://www.paris.co.kr/promotion/holiday-2026-preorder/",
+      "checked": "2026-11-26 공식 페이지 확인"
+    },
+    {
+      "category": "신청 마감",
+      "title": "2027 노인일자리 참여자 모집",
+      "who": "65세 이상 기초연금 수급자 등(사업별 상이)",
+      "benefit": "역대 최대 118만 개 노인일자리 모집",
+      "deadline": "2026-12-24",
+      "deadline_note": "11/27 접수 시작, 지자체별 일정 다를…",
+      "how": "행정복지센터·시니어클럽 방문, 노인일자리 여기",
+      "source_name": "보건복지부 보도자료",
+      "source_url": "https://www.mohw.go.kr/board.es?mid=a10503010100&bid=0027&act=view&list_no=1492669&tag=&nPage=1",
+      "checked": "2026-11-26 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    422,
+    423
+  ],
+  "tg_sent_at": 1795684119
+}
