@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-29",
+  "created_at": "2026-11-28T22:45+09:00",
+  "status": "draft",
+  "headline": "연말 꼭 챙길 신청 2가지",
+  "items": [
+    {
+      "category": "지원금",
+      "title": "근로·자녀장려금 기한 후 신청",
+      "who": "5월 정기신청을 놓친 장려금 대상 가구",
+      "benefit": "근로 최대 330만원, 자녀 1인당 최대 100만원",
+      "deadline": "2026-12-01",
+      "deadline_note": "기한 후 신청 기간 6.2~12.1",
+      "how": "홈택스 또는 ARS(1544-9944) 신청",
+      "source_name": "국세청",
+      "source_url": "https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?mi=40397&cntntsId=238977",
+      "checked": "2026-11-28 공식 페이지 확인"
+    },
+    {
+      "category": "지원금",
+      "title": "2027-1학기 국가장학금 1차",
+      "who": "대학 재학생·신입생·편입·복학생 등",
+      "benefit": "소득구간에 따라 등록금 지원",
+      "deadline": "2027-01-07",
+      "deadline_note": "18시까지, 서류·가구원 동의는 1.14 …",
+      "how": "한국장학재단 누리집·앱에서 신청",
+      "source_name": "한국장학재단",
+      "source_url": "https://www.kosaf.go.kr/ko/notice.do?mode=view&searchStr=&searchType=&page=1&ctgrId1=&ctgrId2=&seqNo=21508",
+      "checked": "2026-11-28 공식 페이지 확인"
+    }
+  ],
+  "tg_message_ids": [
+    440,
+    441
+  ],
+  "tg_sent_at": 1795872596
+}
